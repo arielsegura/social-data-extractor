@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<title>Hello Twitter</title>
+	</head>
+	<body>
+		<h3>Hello, <span th:text="${twitterProfile.name}">Some User</span>!</h3>
+
+		<h4>These is your search result:</h4>
+
+		<ul>
+			<li th:each="topicResult:${topicResults}" th:text="${topicResult.text}">Post</li>
+		</ul>
+	</body>
+</html>

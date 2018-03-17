@@ -1,0 +1,6 @@
+spring:
+  social:
+    twitter:
+      appId: sW3NMddtkYSoAsxCmu6gWgB53
+      appSecret: changeme
+

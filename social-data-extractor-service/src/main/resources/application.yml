@@ -1,0 +1,8 @@
+spring:
+  social:
+    twitter:
+      appId: sW3NMddtkYSoAsxCmu6gWgB53
+      appSecret: changeme
+#logging.level.org.springframework.cassandra: DEBUG
+server:
+  port: 8082
