@@ -32,16 +32,16 @@ The portal and the API by default gets entries from `ElasticSearch`. If needed, 
 - `Run all the services` 
 
 ## Commands
-Start elasticsearch: `docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.2.2`
-Start cassandra: `docker run --name cassandra-container -p 9042:9042 -p 9160:9160 -e CASSANDRA_START_RPC=true -d cassandra`
-Start redis: `docker run -d redis`
-Replace changeme app secret for twitter with your app secret.
-`mvn clean install`
-`java -jar social-data-persistor-service/target/social-data-persistor-service.jar`
-`java -jar social-data-portal/target/social-data-portal.jar -Dtwitter.appsecret=mysecret`
-`java -jar social-data-extractor-service/target/social-data-extractor-service.jar -Dtwitter.appsecret=mysecret`
-In chrome -> `http://localhost:8080/words?searchTerm=lollapalooza`
-Enjoy!
+1. Start elasticsearch: `docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.2.2`
+2. Start cassandra: `docker run --name cassandra-container -p 9042:9042 -p 9160:9160 -e CASSANDRA_START_RPC=true -d cassandra`
+3. Start redis: `docker run -d redis`
+4. Replace changeme app secret for twitter with your app secret.
+5. `mvn clean install`
+6. `java -jar social-data-persistor-service/target/social-data-persistor-service.jar`
+7. `java -jar social-data-portal/target/social-data-portal.jar -Dtwitter.appsecret=mysecret`
+8. `java -jar social-data-extractor-service/target/social-data-extractor-service.jar -Dtwitter.appsecret=mysecret`
+9. In chrome -> `http://localhost:8080/words?searchTerm=lollapalooza`
+10. Enjoy!
 
 https://stackoverflow.com/questions/26909408/export-cassandra-query-result-to-a-csv-file
 
