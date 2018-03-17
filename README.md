@@ -38,8 +38,8 @@ The portal and the API by default gets entries from `ElasticSearch`. If needed, 
 4. Replace changeme app secret for twitter with your app secret.
 5. `mvn clean install`
 6. `java -jar social-data-persistor-service/target/social-data-persistor-service.jar`
-7. `java -jar social-data-portal/target/social-data-portal.jar -Dtwitter.appsecret=mysecret`
-8. `java -jar social-data-extractor-service/target/social-data-extractor-service.jar -Dtwitter.appsecret=mysecret`
+7. `java -jar social-data-portal/target/social-data-portal.jar`
+8. `java -jar social-data-extractor-service/target/social-data-extractor-service.jar`
 9. In chrome -> `http://localhost:8080/words?searchTerm=lollapalooza`
 10. Enjoy!
 
