@@ -2,6 +2,7 @@ package io.github.arielsegura.socialpersistor;
 
 import io.github.arielsegura.socialpersistor.domain.TopicResult;
 import io.github.arielsegura.socialpersistor.repositories.TopicResultRepository;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class TopicResultRepositoryTest {
 
     @Autowired
     TopicResultRepository topicResultRepository;
+
+    @BeforeClass
+    public static void setUp() throws Exception {
+        System.setProperty("es.set.netty.runtime.available.processors", "false"); //https://github.com/netty/netty/issues/6956
+    }
 
     @Test(expected = InvalidDataAccessApiUsageException.class) // can't retrieve with a single key
     public void simpleSaveTest() throws Exception {

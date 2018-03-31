@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.cassandra.config.AbstractCassandraConfiguration;
+import org.springframework.data.cassandra.config.SchemaAction;
 import org.springframework.data.cassandra.core.cql.keyspace.CreateKeyspaceSpecification;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
@@ -27,6 +28,9 @@ public class Application extends AbstractCassandraConfiguration {
     @Value("${spring.data.cassandra.keyspace-name:searches}")
     String keyspace;
 
+    @Value("${spring.data.cassandra.schema-action:CREATE_IF_NOT_EXISTS}")
+    SchemaAction schemaAction;
+
     public static void main(String[] args) {
         System.setProperty("es.set.netty.runtime.available.processors", "false"); //https://github.com/netty/netty/issues/6956
         SpringApplication.run(Application.class, args);
@@ -44,6 +48,11 @@ public class Application extends AbstractCassandraConfiguration {
         CreateKeyspaceSpecification createKeyspaceSpecification = CreateKeyspaceSpecification.createKeyspace(this.keyspace);
         createKeyspaceSpecification.ifNotExists(true).withSimpleReplication(3);
         return createKeyspaceSpecification;
+    }
+
+    @Override
+    public SchemaAction getSchemaAction() {
+        return schemaAction;
     }
 
     @Override

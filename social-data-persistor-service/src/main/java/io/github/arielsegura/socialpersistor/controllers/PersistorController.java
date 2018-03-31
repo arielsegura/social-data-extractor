@@ -58,10 +58,12 @@ public class PersistorController {
                 .build();
         logger.info("Returning items from elasticsearch");
         try {
-            return searchTopicResultRepository.search(searchQuery)
+            List<RestTopicResult> restTopicResults = searchTopicResultRepository.search(searchQuery.getQuery(), pageable)
                     .stream()
                     .map(MappingUtils::fromSearchTopicResult)
                     .collect(Collectors.toList());
+            logger.info("Items size " + restTopicResults.size());
+            return restTopicResults;
         } catch (Exception ex){
             logger.warn("There was an error while fetching data from elastic", ex);
             return Collections.emptyList();

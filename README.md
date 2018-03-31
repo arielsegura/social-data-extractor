@@ -24,8 +24,8 @@ The portal and the API by default gets entries from `ElasticSearch`. If needed, 
 
 ## What you need to run
 - Run `mvn clean install -DskipTests` -> tests pass only if you have cassandra, redis and elasticsearch running. 
-- `Spring Data Portal`: Pass a system property `twitter.appsecret` with your app secret. 
-- `Spring Data Extractor`: Pass a system property `twitter.appsecret` with your app secret.
+- `Spring Data Portal`: Replace changeme app secret for twitter with your app secret.
+- `Spring Data Extractor`: Replace changeme app secret for twitter with your app secret.
 - Launch a `Cassandra` instance 
 - `Spring Data Persistor`: Point to your `Cassandra` instance
 - Launch a `Redis` instance
@@ -33,8 +33,8 @@ The portal and the API by default gets entries from `ElasticSearch`. If needed, 
 
 ## Commands
 1. Start elasticsearch: `docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.2.2`
-2. Start cassandra: `docker run --name cassandra-container -p 9042:9042 -p 9160:9160 -e CASSANDRA_START_RPC=true -d cassandra`
-3. Start redis: `docker run -d redis`
+2. Start cassandra: `docker run --name cassandra-container -p 9042:9042 -p 9160:9160 -e CASSANDRA_START_RPC=true -d cassandra:2.2.12`
+3. Start redis: `docker run -d redis -p 6379:6379`
 4. Replace changeme app secret for twitter with your app secret.
 5. `mvn clean install`
 6. `java -jar social-data-persistor-service/target/social-data-persistor-service.jar`
@@ -52,3 +52,4 @@ This means that once someone logged in with a social network, all the users are 
 
 ## Improvements
 Add streaming support
+Integration Tests to run cassandra, redis and elasticsearch embedded
